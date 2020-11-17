@@ -1,0 +1,13 @@
+.title-bar{
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+.title-img{
+  height: 100px;
+  width: auto;
+}
+.title-text{
+  padding-top: 10px;
+}
