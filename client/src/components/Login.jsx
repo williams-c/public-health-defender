@@ -1,7 +1,7 @@
 // App.jsx
 import React, { useState } from 'react';
 
-const Login = () => {
+const SignUp = () => {
     const [username, updateUsername] = useState('');
     const [password, updatePassword] = useState('');
 
@@ -30,6 +30,7 @@ const Login = () => {
         <div className='login-box'>
 
           <form className='login-form'>
+            <p>Sign Up</p>
             <input onChange={(e) => {updateUsername(e.target.value)}} className='login-form-element' type="text" placeholder="Username" value={username}></input><br/>
             <input onChange={(e) => {updatePassword(e.target.value)}} className='login-form-element' type="password" placeholder="Password" value={password}></input><br/>
             <input onClick={(e) => {handleSubmit(e)}} className='login-form-element' type="submit"></input>
@@ -41,4 +42,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default SignUp;

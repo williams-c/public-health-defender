@@ -1,7 +1,8 @@
 // App.jsx
 import React from 'react';
 import Title from './components/Title';
-import Login from './components/Login'
+import SignUp from './components/Login';
+import Game from './components/Game';
 
 const App = () => {
     return (
@@ -11,7 +12,8 @@ const App = () => {
 
             <Title />
 
-            <Login />
+            <Game />
+            {/* <SignUp /> */}
 
           </div>
 
