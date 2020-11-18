@@ -1,10 +1,18 @@
 import React from 'react';
 import City from './City';
 
-const CityMenu = () => {
+const CityMenu = ({ cities }) => {
   return (
     <div>
-      <City />
+      {cities.map((city, index) => {
+        return <City
+                  name={city.name}
+                  population={city.population}
+                  infected={city.infected}
+                  spread={city.spread}
+                  income={city.income}
+               />
+      })}
     </div>
   )
 }
