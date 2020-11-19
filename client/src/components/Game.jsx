@@ -12,7 +12,7 @@ const sampleCities = [
   {
     name: 'Seattle',
     population: 4000000,
-    infected: Math.floor(Math.random() * 1000),
+    infected: Math.floor(Math.random() * 100000),
     spread: 7,
     income: 1500,
   },
