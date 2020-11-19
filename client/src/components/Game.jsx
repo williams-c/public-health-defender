@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CityMenu from './game_components/CityMenu';
+import ProgressBar from './game_components/ProgressBar';
 
 const sampleCities = [
   {
@@ -21,12 +22,17 @@ const sampleCities = [
 const Game = () => {
   const [gameState, updateGameState] = useState('playing');
   const [cities, updateCities] = useState(sampleCities);
+  const [selectedCity, updateSelectedCity] = useState('');
+  const [totalMoney, updateTotalMoney] = useState(0);
+  const [vaccineBuyout, updateVaccineBuyout] = useState(1000000);
 
   const handleTurn = () => {
     let newCities = cities;
     newCities.forEach((city) => {
       const increase = Math.ceil((city.spread / 100) * city.infected)
       city.infected += increase
+      updateTotalMoney(totalMoney + city.income)
+      // check if player has lost
       if (city.infected >= city.population) {
         updateGameState('defeat')
       }
@@ -37,7 +43,9 @@ const Game = () => {
   return (
     <div>
       {gameState === 'defeat' ? <div> Game Over ! </div> : ''}
-      <CityMenu cities={cities}/>
+      <h3>Vaccine Progress</h3>
+      <ProgressBar progress={(totalMoney / vaccineBuyout) * 100} />
+      <CityMenu cities={cities} selectedCity={selectedCity}/>
       <button onClick={handleTurn} className="turn-btn">End Turn</button>
     </div>
   )
