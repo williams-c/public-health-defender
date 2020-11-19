@@ -1,5 +1,5 @@
 import React from 'react';
-import InfectionBar from './InfectionBar';
+import ProgressBar from './ProgressBar';
 
 const City = ({ name, population, infected, spread, income }) => {
   return (
@@ -10,7 +10,7 @@ const City = ({ name, population, infected, spread, income }) => {
         <div className="city-name">{name}</div>
         <div className="city-stats">Population: {population}</div>
         <div className="city-stats">Total Infected: {infected}</div>
-        <InfectionBar progress={infected > population ? 100 : (infected / population) * 100} />
+        <ProgressBar progress={infected > population ? 100 : (infected / population) * 100} type={'infection'}/>
         <div className="city-stats">Infection Rate: {spread}%</div>
         <div className="city-stats">Income: {income}</div>
 

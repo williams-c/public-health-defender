@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InfectionBar = ({ progress }) => {
+const ProgressBar = ({ progress, type }) => {
   const containerStyles = {
     height: 20,
     width: 'auto',
@@ -13,7 +13,7 @@ const InfectionBar = ({ progress }) => {
   const fillerStyles = {
     height: '100%',
     width: `${progress}%`,
-    backgroundColor: "#0040e1",
+    backgroundColor: type === 'infection' ? "#0040e1" : '#188028',
   }
 
   return (
@@ -23,4 +23,4 @@ const InfectionBar = ({ progress }) => {
   );
 }
 
-export default InfectionBar;
+export default ProgressBar;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import City from './City';
 
-const CityMenu = ({ cities }) => {
+const CityMenu = ({ cities, selectedCity }) => {
   return (
     <div>
       {cities.map((city, index) => {
