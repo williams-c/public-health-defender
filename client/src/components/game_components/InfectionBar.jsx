@@ -4,7 +4,8 @@ const InfectionBar = ({ progress }) => {
   const containerStyles = {
     height: 20,
     width: 'auto',
-    marginRight: 20,
+    marginLeft: 10,
+    marginRight: 10,
     backgroundColor: "#e0e0de",
     marginBottom: 10,
   }
