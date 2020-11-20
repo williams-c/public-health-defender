@@ -7,16 +7,22 @@ const sampleCities = [
   {
     name: 'Denver',
     population: 3000000,
-    infected: Math.floor(Math.random() * 1000),
+    infected: 500,
     spread: 5,
     income: 1000,
+    infectionHistory: [[500,5],[500,5]],
+    hospitalized: 0,
+    hospitalBeds: 2000,
   },
   {
     name: 'Seattle',
     population: 4000000,
-    infected: Math.floor(Math.random() * 100000),
+    infected: 750,
     spread: 7,
     income: 1500,
+    infectionHistory: [[750,7],[750,7]],
+    hospitalized: 0,
+    hospitalBeds: 3500,
   },
 ]
 
@@ -40,8 +46,13 @@ const Game = () => {
   const handleTurn = () => {
     let newCities = cities;
     newCities.forEach((city) => {
-      const increase = Math.ceil((city.spread / 100) * city.infected)
+      const increase = city.infectionHistory[1][0] + Math.ceil((city.spread / 100) * city.infectionHistory[1][0])
       city.infected += increase
+      // remove history from two weeks ago and add current week
+      // tuple[0] num infected, tuple[1] num of tuple[0] that are hospitalized
+      city.infectionHistory.shift()
+      let hospitalized = Math.ceil(((Math.random() * 4) / 100) * increase)
+      city.infectionHistory.push([increase, hospitalized])
       updateTotalMoney(totalMoney + city.income)
       // check if player has lost
       if (city.infected >= city.population) {
@@ -57,7 +68,7 @@ const Game = () => {
       {gameState === 'defeat' ? <div> Game Over ! </div> : ''}
 
       <h3>Vaccine Progress</h3>
-      <ProgressBar progress={(totalMoney / vaccineBuyout) * 100} />
+      <ProgressBar progress={(totalMoney / vaccineBuyout) * 100} color={'#188028'} />
 
       {selectedCity ? <CityManagement goBack={returnToCityMenu} selectedCity={selectedCity} /> :
       <div>

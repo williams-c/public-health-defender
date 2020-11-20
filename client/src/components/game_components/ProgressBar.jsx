@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProgressBar = ({ progress, type }) => {
+const ProgressBar = ({ progress, color }) => {
   const containerStyles = {
     height: 20,
     width: 'auto',
@@ -12,8 +12,8 @@ const ProgressBar = ({ progress, type }) => {
 
   const fillerStyles = {
     height: '100%',
-    width: `${progress}%`,
-    backgroundColor: type === 'infection' ? "#0040e1" : '#188028',
+    width: `${progress < 100 ? progress : 100}%`,
+    backgroundColor: color,
   }
 
   return (

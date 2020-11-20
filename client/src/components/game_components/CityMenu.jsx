@@ -13,6 +13,8 @@ const CityMenu = ({ handleSelect, cities, selectedCity }) => {
                   infected={city.infected}
                   spread={city.spread}
                   income={city.income}
+                  history={city.infectionHistory}
+                  beds={city.hospitalBeds}
                />
       })}
     </div>
