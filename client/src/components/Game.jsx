@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CityMenu from './game_components/CityMenu';
 import ProgressBar from './game_components/ProgressBar';
+import CityManagement from './game_components/CityManagement';
 
 const sampleCities = [
   {
@@ -32,6 +33,10 @@ const Game = () => {
     updateSelectedCity(cities[index])
   }
 
+  const returnToCityMenu = () => {
+    updateSelectedCity('')
+  }
+
   const handleTurn = () => {
     let newCities = cities;
     newCities.forEach((city) => {
@@ -48,11 +53,18 @@ const Game = () => {
 
   return (
     <div>
+
       {gameState === 'defeat' ? <div> Game Over ! </div> : ''}
+
       <h3>Vaccine Progress</h3>
       <ProgressBar progress={(totalMoney / vaccineBuyout) * 100} />
-      <CityMenu handleSelect={handleCitySelect} cities={cities} selectedCity={selectedCity}/>
-      <button onClick={handleTurn} className="turn-btn">End Turn</button>
+
+      {selectedCity ? <CityManagement goBack={returnToCityMenu} selectedCity={selectedCity} /> :
+      <div>
+        <CityMenu handleSelect={handleCitySelect} cities={cities} selectedCity={selectedCity}/>
+        <button onClick={handleTurn} className="turn-btn">End Turn</button>
+      </div>}
+
     </div>
   )
 }
