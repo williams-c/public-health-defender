@@ -1,9 +1,9 @@
 import React from 'react';
 import ProgressBar from './ProgressBar';
 
-const City = ({ name, population, infected, spread, income }) => {
+const City = ({ index, handleSelect, name, population, infected, spread, income }) => {
   return (
-    <div className="city-wrapper">
+    <div onClick={() => {handleSelect(index)}} className="city-wrapper">
 
       <div className="city-info">
 

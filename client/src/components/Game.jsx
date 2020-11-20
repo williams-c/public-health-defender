@@ -26,6 +26,12 @@ const Game = () => {
   const [totalMoney, updateTotalMoney] = useState(0);
   const [vaccineBuyout, updateVaccineBuyout] = useState(1000000);
 
+  const handleCitySelect = (index) => {
+    console.log(index)
+    console.log(cities[index])
+    updateSelectedCity(cities[index])
+  }
+
   const handleTurn = () => {
     let newCities = cities;
     newCities.forEach((city) => {
@@ -45,7 +51,7 @@ const Game = () => {
       {gameState === 'defeat' ? <div> Game Over ! </div> : ''}
       <h3>Vaccine Progress</h3>
       <ProgressBar progress={(totalMoney / vaccineBuyout) * 100} />
-      <CityMenu cities={cities} selectedCity={selectedCity}/>
+      <CityMenu handleSelect={handleCitySelect} cities={cities} selectedCity={selectedCity}/>
       <button onClick={handleTurn} className="turn-btn">End Turn</button>
     </div>
   )
