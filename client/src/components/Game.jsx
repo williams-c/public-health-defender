@@ -13,6 +13,7 @@ const sampleCities = [
     infectionHistory: [[500,5],[500,5]],
     hospitalized: 0,
     hospitalBeds: 2000,
+    restrictionLevel: 0,
   },
   {
     name: 'Seattle',
@@ -23,6 +24,7 @@ const sampleCities = [
     infectionHistory: [[750,7],[750,7]],
     hospitalized: 0,
     hospitalBeds: 3500,
+    restrictionLevel: 1,
   },
 ]
 
@@ -34,13 +36,21 @@ const Game = () => {
   const [vaccineBuyout, updateVaccineBuyout] = useState(1000000);
 
   const handleCitySelect = (index) => {
-    console.log(index)
-    console.log(cities[index])
     updateSelectedCity(cities[index])
   }
 
   const returnToCityMenu = () => {
     updateSelectedCity('')
+  }
+
+  const changeRestrictions = (name, level) => {
+    let newCities = cities;
+    newCities.forEach((city) => {
+      if (city.name === name) {
+        city.restrictionLevel = level;
+      }
+    })
+    updateCities([...newCities])
   }
 
   const handleTurn = () => {
@@ -70,7 +80,7 @@ const Game = () => {
       <h3>Vaccine Progress</h3>
       <ProgressBar progress={(totalMoney / vaccineBuyout) * 100} color={'#188028'} />
 
-      {selectedCity ? <CityManagement goBack={returnToCityMenu} selectedCity={selectedCity} /> :
+      {selectedCity ? <CityManagement changeRestrictions={changeRestrictions} goBack={returnToCityMenu} selectedCity={selectedCity} /> :
       <div>
         <CityMenu handleSelect={handleCitySelect} cities={cities} selectedCity={selectedCity}/>
         <button onClick={handleTurn} className="turn-btn">End Turn</button>

@@ -24,8 +24,6 @@ const City = ({ index, handleSelect, name, population, infected, spread, income,
         <div className="city-stats">Total Infected: {infected}</div>
         <ProgressBar progress={infected > population ? 100 : (infected / population) * 100} color={"#0040e1"}/>
 
-        <div className="city-stats">Deaths: </div>
-
       </div>
 
     </div>

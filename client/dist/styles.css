@@ -77,3 +77,40 @@
 .turn-btn:hover{
   background-color: rgb(175, 223, 175);
 }
+.city-management-wrapper{
+  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border: 2px solid black;
+  text-align: center;
+  border-radius: 10px;
+}
+.submenu-wrapper{
+  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 10px;
+}
+.menu-btn{
+  width: 100%;
+}
+.inactive-menu-btn{
+  width: 100%;
+  background-color: rgb(139, 139, 139)
+}
+.positive-effect{
+  color: green;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.negative-effect{
+  color: red;
+  padding-left: 5px;
+  padding-right: 5px;
+}
