@@ -47,7 +47,11 @@ const Game = () => {
     let newCities = cities;
     newCities.forEach((city) => {
       if (city.name === name) {
+        // positive if increasing spread, negeative otherwise
+        let spreadChange = level - city.restrictionLevel;
         city.restrictionLevel = level;
+        city.spread = city.spread - spreadChange;
+        console.log(city.spread)
       }
     })
     updateCities([...newCities])
